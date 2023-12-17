@@ -365,7 +365,3 @@ func (uuids UUIDs) Strings() []string {
 	}
 	return uuidStrs
 }
-
-// Type and Format allows supporting https://github.com/wI2L/fizz
-func (UUID) Type() string   { return "string" }
-func (UUID) Format() string { return "uuid" }
