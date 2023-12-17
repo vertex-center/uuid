@@ -187,10 +187,12 @@ func Must(uuid UUID, err error) UUID {
 }
 
 // Validate returns an error if s is not a properly formatted UUID in one of the following formats:
-//   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-//   urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-//   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//   {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+//
+//	xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+//	urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+//	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//	{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+//
 // It returns an error if the format is invalid, otherwise nil.
 func Validate(s string) error {
 	switch len(s) {
@@ -363,3 +365,7 @@ func (uuids UUIDs) Strings() []string {
 	}
 	return uuidStrs
 }
+
+// Type and Format allows supporting https://github.com/wI2L/fizz
+func (UUID) Type() string   { return "string" }
+func (UUID) Format() string { return "uuid" }
